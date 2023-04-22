@@ -1,75 +1,17 @@
 {
     "latest": {
-        "taimen": [
+        "sdm845": [
             {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_taimen-factory_11.5.0.zip"
+                "version": "edge",
+                "variant": "phosh",
+                "url_root": "https://images.postmarketos.org/bpo/edge/oneplus-enchilada/phosh/20230419-0323/20230419-0323-postmarketOS-edge-phosh-22.2-oneplus-enchilada.img.xz",
+                "url_boot": "https://images.postmarketos.org/bpo/edge/oneplus-enchilada/phosh/20230419-0323/20230419-0323-postmarketOS-edge-phosh-22.2-oneplus-enchilada-boot.img.xz"
             },
             {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_taimen-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "walleye": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_walleye-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_wahoo/v11.5.0/proton-aosp_walleye-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "bramble": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_bramble-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_bramble-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "redfin": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_redfin-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_redbull/v11.5.0/proton-aosp_redfin-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "coral": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_coral-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_coral-factory_11.5.0-gapps.zip"
-            }
-        ],
-        "flame": [
-            {
-                "version": "11.5.0",
-                "variant": "minimal",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_flame-factory_11.5.0.zip"
-            },
-            {
-                "version": "11.5.0",
-                "variant": "gapps",
-                "url": "https://github-releases-proxy.kdrag0n.workers.dev/android_device_google_coral/v11.5.0/proton-aosp_flame-factory_11.5.0-gapps.zip"
+                "version": "edge",
+                "variant": "gnome_mobile",
+                "url_root": "https://connolly.tech/autotester/20230419-0313-postmarketOS-edge-gnome-mobile-1-oneplus-enchilada.img",
+                "url_boot": "https://connolly.tech/autotester/20230419-0313-postmarketOS-edge-gnome-mobile-1-oneplus-enchilada-boot.img"
             }
         ]
     }

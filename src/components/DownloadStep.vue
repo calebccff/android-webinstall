@@ -37,7 +37,7 @@
         <div v-else class="d-flex flex-wrap justify-space-around">
             <v-card
                 v-for="release in latestReleases"
-                :key="release.url"
+                :key="release.url_root"
                 outlined
                 max-width="16rem"
                 class="ma-4 d-flex flex-column"
@@ -111,7 +111,7 @@
             <v-btn
                 color="primary"
                 @click="$bubble('nextStep')"
-                :disabled="$root.$data.zipBlob === null"
+                :disabled="$root.$data.bootBlob === null"
                 >Next <v-icon dark right>mdi-arrow-right</v-icon></v-btn
             >
             <v-btn text @click="$bubble('prevStep')">Back</v-btn>
@@ -177,16 +177,26 @@ export default {
                 this.saEvent(
                     `download_build__${this.$root.$data.product}_${release.version}_${release.variant}`
                 );
+                console.log("Downloading release", release);
                 await this.blobStore.init();
-                let blob = await this.blobStore.download(
-                    release.url,
+                let root_blob = await this.blobStore.download(
+                    release.url_root,
                     (progress) => {
-                        this.downloadProgress = progress * 100;
+                        this.downloadProgress = progress * 95;
+                    }
+                );
+
+                this.$root.$data.rootBlob = root_blob;
+
+                let boot_blob = await this.blobStore.download(
+                    release.url_boot,
+                    (progress) => {
+                        this.downloadProgress = 95 + progress * 5;
                     }
                 );
 
                 this.downloadProgress = 100;
-                this.$root.$data.zipBlob = blob;
+                this.$root.$data.bootBlob = boot_blob;
                 this.error = null;
 
                 if (this.firstDownload) {

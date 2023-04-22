@@ -181,22 +181,42 @@ export default {
                 this.saEvent(
                     `install_build__${this.$root.$data.product}_${this.$root.$data.release.version}_${this.$root.$data.release.variant}`
                 );
-                let blob = this.$root.$data.zipBlob;
-                await this.device.flashFactoryZip(
-                    blob,
-                    this.$root.$data.installType === "clean",
-                    this.reconnectCallback,
-                    (action, item, progress) => {
-                        let userAction = fastboot.USER_ACTION_MAP[action];
-                        let userItem =
-                            item === "avb_custom_key"
-                                ? "verified boot key"
-                                : item;
-                        this.installStatus = `${userAction} ${userItem}`;
-                        this.installStatusIcon = INSTALL_STATUS_ICONS[action];
+                let root_blob = this.$root.$data.rootBlob;
+                let boot_blob = this.$root.$data.bootBlob;
+                this.installStatus = "Flashing rootfs";
+                this.installStatusIcon = INSTALL_STATUS_ICONS.flash;
+                await this.device.flashBlob(
+                    "userdata",
+                    root_blob,
+                    (progress) => {
                         this.installProgress = progress * 100;
                     }
                 );
+                this.installStatus = "Flashing boot";
+                await this.device.flashBlob(
+                    "boot",
+                    boot_blob,
+                    (progress) => {
+                        this.installProgress = progress * 100;
+                    }
+                );
+                this.installStatus = "Erasing dtbo";
+                await this.device.runCommand("erase:dtbo");
+                // await this.device.flashFactoryZip(
+                //     blob,
+                //     this.$root.$data.installType === "clean",
+                //     this.reconnectCallback,
+                //     (action, item, progress) => {
+                //         let userAction = fastboot.USER_ACTION_MAP[action];
+                //         let userItem =
+                //             item === "avb_custom_key"
+                //                 ? "verified boot key"
+                //                 : item;
+                //         this.installStatus = `${userAction} ${userItem}`;
+                //         this.installStatusIcon = INSTALL_STATUS_ICONS[action];
+                //         this.installProgress = progress * 100;
+                //     }
+                // );
 
                 this.installStatus = `Restarting into ${this.$root.$data.OS_NAME}`;
                 await this.device.reboot("");

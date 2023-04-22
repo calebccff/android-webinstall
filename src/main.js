@@ -84,7 +84,8 @@ new Vue({
     vuetify,
     data: {
         product: null,
-        zipBlob: null,
+        rootBlob: null,
+        bootBlob: null,
         release: null,
         installType: null,
         ...Config,

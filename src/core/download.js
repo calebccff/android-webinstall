@@ -32,6 +32,27 @@ function fetchBlobWithProgress(url, onProgress) {
     });
 }
 
+// function fetchBlobAndDecompress(url, onProgress) {
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("GET", url);
+//     xhr.responseType = "arraybuffer";
+//     xhr.send();
+
+//     return new Promise((resolve, reject) => {
+//         xhr.onload = () => {
+//             let inStream = new window.LZMA.iStream(xhr.response);
+//             var outStream = window.LZMA.decompressFile(inStream);
+//             resolve(new Blob([outStream.buffer], { type: "application/octet-stream" }));
+//         };
+//         xhr.onprogress = (event) => {
+//             onProgress((event.loaded / event.total) * 0.99);
+//         };
+//         xhr.onerror = () => {
+//             reject(new XhrError(xhr.status, xhr.statusText));
+//         };
+//     });
+// }
+
 export class BlobStore {
     constructor() {
         this.db = null;
@@ -107,4 +128,22 @@ export class BlobStore {
 
         return blob;
     }
+
+    // async downloadXz(url, onProgress = () => {}) {
+    //     let filename = url.split("/").pop();
+    //     let blob = await this.loadFile(filename);
+    //     if (blob === null) {
+    //         common.logDebug(`Downloading ${url}`);
+    //         blob = await fetchBlobAndDecompress(url, onProgress);
+    //         common.logDebug("File downloaded, saving...");
+    //         await this.saveFile(filename, blob);
+    //         common.logDebug("File saved");
+    //     } else {
+    //         common.logDebug(
+    //             `Loaded ${filename} from blob store, skipping download`
+    //         );
+    //     }
+
+    //     return blob;
+    // }
 }
